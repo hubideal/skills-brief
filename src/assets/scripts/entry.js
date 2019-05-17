@@ -69,10 +69,10 @@ var color7 = d3.scaleOrdinal()
          .domain(['0', '1', '2'])
          .range(["#21D177", "#F7594C", "#F2BC02"]);
 var centerScale = d3.scalePoint().padding(2).range([w*.1, w*.9]);
-var centerScale2 = d3.scalePoint().padding(7).range([w*.15, w*.85]);
+var centerScale2 = d3.scalePoint().padding(1).range([w*.15, w*.85]);
 var forceStrength = .15;
-var forceStrength2 = .05;
-var forceStrength3 = .03;
+var forceStrength2 = .09;
+var forceStrength3 = .07;
 
 var svg = d3.select("body").append("svg")
         .attr("width", w)
@@ -139,22 +139,22 @@ function change(data){
             svg2.selectAll('circle')
               .attr("r", function(d){ return d.r; })
               .attr("cx", function(d){ return d.x;})
-              .attr("cy", function(d){ return d.y -h*.12;})
+              .attr("cy", function(d){ return d.y -h*.05;})
               .style("fill", function(d){ return color2(d.ID);})
               .style("stroke", function(d){ return color2(d.ID);});
               
         svg2.append("text")
         .attr("x", w*.5)             
-        .attr("y", h*.1)
+        .attr("y", h*.08)
         .attr("text-anchor", "center")  
         .attr('class', "domTitle")
         .attr('fill', '#282828')
-        .text('Recent Immigrants, 2017');
+        .text('Recent Immigrants');
         
         
         svg2.append("text")
         .attr("x", w*.2)             
-        .attr("y", h*.67)
+        .attr("y", h*.83)
         .attr("text-anchor", "center")  
         .attr('class', "domQuote")
         .attr('fill', '#282828')
@@ -163,34 +163,34 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.2)             
-        .attr("y", h*.7)
+        .attr("y", h*.86)
         .attr("text-anchor", "center")  
         .attr('class', "domQuote")
         .attr('fill', '#282828')
-        .text('for those who had arrived within the last year.  In this brief, we highlight the unique talents and skills');
+        .text('for those who had arrived within the last year.  In this brief, we highlight the unique talents');
         
         
         svg2.append("text")
         .attr("x",w*.2)             
-        .attr("y", h*.73)
+        .attr("y", h*.89)
         .attr("text-anchor", "center")  
         .attr('class', "domQuote")
         .attr('fill', '#282828')
-        .text('these New Americans brought with them.');
+        .text('and skills these New Americans brought with them.');
       
         
         svg2.append('rect')
         .attr("rx", 6)
         .attr("ry", 6)
         .attr('x',w*.2)
-        .attr('y', h*.76)
+        .attr('y', h*.92)
         .attr("width", 10)
         .attr("height", 10)
         .style("fill", "#a983cd" )
         
          svg2.append('text')
          .attr('x',w*.25)
-         .attr('y', h*.77)
+         .attr('y', h*.93)
          .attr('class', "domQuote")
          .attr('fill', '#282828')
          .text(" equals approx. 1,000 new immigrants" )
@@ -210,23 +210,23 @@ function change(data){
           svg2.selectAll('circle')
               .transition()
               .duration(100)
-              .attr("cx", function(d){ return d.x*1.1; })
+              .attr("cx", function(d){ return d.x + w*.2;})
               // .attr("cy", function(d){ return d.y; })
-              .attr("cy", function(d){ return d.y*1.3; })
+              .attr("cy", function(d){ return d.y - h*.3; })
               .style("fill", function(d){ return color3(d.Education);})
               .style("stroke", function(d){ return color3(d.Education); });
           
-           svg2.append("text")
-        .attr("x", w*.5)             
-        .attr("y", h/10)
-        .attr("text-anchor", "center")  
-        .attr('class', "domTitle")
-        .attr('fill', '#282828')
-        .text('Recent Immigrants by Degree');
+        //    svg2.append("text")
+        // .attr("x", w*.5)             
+        // .attr("y", h*.05)
+        // .attr("text-anchor", "center")  
+        // .attr('class', "domTitle")
+        // .attr('fill', '#282828')
+        // .text('Recent Immigrants by Degree');
         
         svg2.append("text")
         .attr("x", w*.1)             
-        .attr("y", h*.7)
+        .attr("y", h*.75)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill','#6a7ef1')
@@ -234,7 +234,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.3)             
-        .attr("y", h*.7)
+        .attr("y", h*.75)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill','#a983cd')
@@ -242,7 +242,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.5)             
-        .attr("y", h*.7)
+        .attr("y", h*.75)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill','#cebbee')
@@ -250,7 +250,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.65)             
-        .attr("y", h*.7)
+        .attr("y", h*.75)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill','#86d8f8')
@@ -258,18 +258,18 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.9)             
-        .attr("y", h*.7)
+        .attr("y", h*.75)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill', '#909090')
         .text('No Degree');
           
-          svg2.on('click', function() {
+        //   svg2.on('click', function() {
     
                
-                splitBubbles("STEM");
+        //         splitBubbles("STEM");
         
-        })
+        // })
         }
         
         function STEM() {
@@ -280,26 +280,27 @@ function change(data){
               .duration(100)
               // .attr("cx", function(d){ if (d.STEM != "0") {return d.x+w/4;} else {return 0;} })
               // .attr("cy", function(d){ if (d.STEM != "0") {return d.y;} else {return 0;} })
-              .attr("cx", function(d) {return d.x*1.1;})
-              .attr("cy", function(d){ return d.y;})
+              .attr("cx", function(d) {return d.x*1.2 + w*.2;})
+              .attr("cy", function(d){ if (d.STEM =="1" | d.STEM =="2") {return d.y -h*.3;}
+              else {return d.y + h*.3;}})
               .attr('opacity', function(d){ if (d.STEM == "0") {return .5;} })
               .style("fill", function(d){ return color4(d.STEM);})
               .style("stroke", function(d){ return color4(d.STEM); });
-          svg2.on('click', function() {
-                d3.event.stopPropagation();
-                splitBubbles("FieldNew");
-        })
-         svg2.append("text")
-        .attr("x", w*.5)             
-        .attr("y", h*.1)
-        .attr("text-anchor", "center")  
-        .attr('class', "domTitle")
-        .attr('fill', '#77777')
-        .text('STEM Degrees');
+        //   svg2.on('click', function() {
+        //         d3.event.stopPropagation();
+        //         splitBubbles("FieldNew");
+        // })
+        //  svg2.append("text")
+        // .attr("x", w*.5)             
+        // .attr("y", h*.05)
+        // .attr("text-anchor", "center")  
+        // .attr('class', "domTitle")
+        // .attr('fill', '#77777')
+        // .text('STEM Degrees');
         
         svg2.append("text")
         .attr("x", w*.2)             
-        .attr("y", h*.46)
+        .attr("y", h*.55)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill', "#a983cd")
@@ -307,7 +308,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.5)             
-        .attr("y", h*.46)
+        .attr("y", h*.55)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill', "#ff7150")
@@ -315,7 +316,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.67)             
-        .attr("y", h*.7)
+        .attr("y", h*.8)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill', '#282828')
@@ -333,28 +334,33 @@ function change(data){
               .duration(100)
               .style('opacity', '1')
               .attr("cx", function(d){ 
-                  if (d.FieldNew == "0") {return d.x*1.3;}
-                  else if (d.FieldNew == '7'||d.FieldNew == '8'||d.FieldNew == '9'||d.FieldNew == '10'){return (d.x*1.7-w*.5) }
-                  else {return (d.x*1.7);}
+                  if (d.FieldNew == "0") {return d.x+w*.4;}
+                  else if (d.FieldNew == '7'||d.FieldNew == '8'||d.FieldNew == '9'||d.FieldNew == '10'){return (d.x*1.8-w*.5) }
+                  else {return (d.x*1.8+w*.2);}
                   
               })
-              .attr("cy", function(d) {return d.y*1.3;})
+              .attr("cy", function(d){ 
+                  if (d.FieldNew == "0") {return d.y + h*.3;}
+                  else if (d.FieldNew == '7'||d.FieldNew == '8'||d.FieldNew == '9'||d.FieldNew == '10'){return (d.y*1.5) }
+                  else {return (d.y - h*.3);}
+                  
+              })
               .style("fill", function(d){ return color5(d.FieldNew);})
               .style("stroke", function(d){ return color5(d.FieldNew); });
       
       
       
-      svg2.append("text")
-        .attr("x", w*.5)             
-        .attr("y", h*.1)
-        .attr("text-anchor", "center")  
-        .attr('class', "domTitle")
-        .attr('fill', "#282828")
-        .text('Degrees by Field of Study');  
+      // svg2.append("text")
+      //   .attr("x", w*.5)             
+      //   .attr("y", h*.05)
+      //   .attr("text-anchor", "center")  
+      //   .attr('class', "domTitle")
+      //   .attr('fill', "#282828")
+      //   .text('Degrees by Field of Study');  
               
       svg2.append("text")
         .attr("x", w*.1)             
-        .attr("y", h*.17)
+        .attr("y", h*.07)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill',  "#6a7ef1")
@@ -362,7 +368,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.33)             
-        .attr("y", h*.17)
+        .attr("y", h*.07)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#cebbee')
@@ -372,7 +378,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.5)             
-        .attr("y", h*.17)
+        .attr("y", h*.07)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#a983cd')
@@ -381,7 +387,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.5)             
-        .attr("y", h*.19)
+        .attr("y", h*.09)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#a983cd')
@@ -391,7 +397,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.63)             
-        .attr("y", h*.17)
+        .attr("y", h*.07)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#86d8f8')
@@ -399,7 +405,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.63)             
-        .attr("y", h*.19)
+        .attr("y", h*.09)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#86d8f8')
@@ -407,7 +413,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.75)             
-        .attr("y", h*.17)
+        .attr("y", h*.07)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', "#d2eaee")
@@ -415,7 +421,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.75)             
-        .attr("y", h*.19)
+        .attr("y", h*.09)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', "#d2eaee")
@@ -423,7 +429,7 @@ function change(data){
         
          svg2.append("text")
         .attr("x", w*.9)             
-        .attr("y", h*.17)
+        .attr("y", h*.07)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill','#a0a1a5')
@@ -460,25 +466,18 @@ function change(data){
         
         
         svg2.append("text")
-        .attr("x", w*.8)             
+        .attr("x", w*.85)             
         .attr("y", h*.55)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill','#bd874b')
-        .text('Other');
+        .text('Other Non-STEM');
         
-        svg2.append("text")
-        .attr("x", w*.8)             
-        .attr("y", h*.57)
-        .attr("text-anchor", "center")  
-        .attr('class', "professions")
-        .attr('fill','#bd874b')
-        .text('Non-STEM');
         
         
         svg2.append("text")
-        .attr("x", w)             
-        .attr("y", h*.75)
+        .attr("x", w*1.1)             
+        .attr("y", h*.8)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#282828')
@@ -487,12 +486,12 @@ function change(data){
                 
                 
             
-            svg2.on('click', function() {
-                d3.event.stopPropagation();
-                splitBubbles("profession");
+        //     svg2.on('click', function() {
+        //         d3.event.stopPropagation();
+        //         splitBubbles("profession");
                 
 
-        })
+        // })
         }
         
 
@@ -505,31 +504,24 @@ function change(data){
               .attr("r", function(d){ return d.r; })
               .transition()
               .duration(75)
-              .attr("cx", function(d){ if (d.profession == "11") {return d.x+w*.15}
-                                        else {return d.x*1.3}
+              .attr("cx", function(d){ if (d.profession == "11") {return d.x+w*.2}
+                                        else {return d.x*1.8}
               })
-              .attr("cy", function(d){ return d.y;})
+              .attr("cy", function(d){ if (d.profession == "1" || d.profession == "3" || d.profession == "5" || d.profession == "7" || d.profession == "9") {return d.y*1.1-h*.3} 
+                                       else if (d.profession == "2" || d.profession == "4" || d.profession == "6" || d.profession == "8" || d.profession == "10") {return d.y*1.1}
+                                       else if (d.profession == "11") {return d.y+h*.5} 
+                                        else {return d.y*0}
+              })
               .style("fill", function(d){ return color6(d.profession);})
               .style("stroke", function(d){ return color6(d.profession);});
-            
-            
-            
-            
-      svg2.append("text")
-        .attr("x", w*.5)             
-        .attr("y", h*.1)
-        .attr("text-anchor", "center")  
-        .attr('class', "domTitle")
-        .attr('fill', "#282828")
-        .text('Top 10 Most Common Occupations');  
-            
+  
        
         
         
         
         svg2.append("text")
         .attr("x", w*.13)             
-        .attr("y", h*.18)
+        .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', "#6a7ef1")
@@ -538,7 +530,7 @@ function change(data){
         
          svg2.append("text")
         .attr("x",  w*.13)             
-        .attr("y", h*.2)
+        .attr("y", h*.12)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', "#6a7ef1")
@@ -548,7 +540,7 @@ function change(data){
         // 
         svg2.append("text")
         .attr("x", w*.31)             
-        .attr("y", h*.18)
+        .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#a983cd')
@@ -556,7 +548,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.31)             
-        .attr("y", h*.2)
+        .attr("y", h*.12)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#a983cd')
@@ -566,7 +558,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.48)             
-        .attr("y", h*.18)
+        .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#a0a1a5')
@@ -574,7 +566,7 @@ function change(data){
         
          svg2.append("text")
         .attr("x", w*.48)             
-        .attr("y", h*.20)
+        .attr("y", h*.12)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#a0a1a5')
@@ -583,7 +575,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.65)             
-        .attr("y", h*.18)
+        .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#cebbee')
@@ -591,7 +583,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.82)             
-        .attr("y", h*.18)
+        .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#86d8f8')
@@ -601,7 +593,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.2)             
-        .attr("y", h/1.9)
+        .attr("y", h*.5)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', "#ff7150")
@@ -609,32 +601,18 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.37)             
-        .attr("y", h/1.9)
+        .attr("y", h*.5)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill','#facab6')
         .text('Managers');
         
-        svg2.append("text")
-        .attr("x", w*.9)             
-        .attr("y", h*.6)
-        .attr("text-anchor", "center")  
-        .attr('class', "professions")
-        .attr('fill', '#999999')
-        .text('Other');
         
-         svg2.append("text")
-        .attr("x", w*.9)             
-        .attr("y", h*.615)
-        .attr("text-anchor", "center")  
-        .attr('class', "professions")
-        .attr('fill', '#999999')
-        .text('Occupations');
           
         
         svg2.append("text")
         .attr("x", w*.52)             
-        .attr("y", h/1.9)
+        .attr("y", h*.5)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#bd874b')
@@ -643,7 +621,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.67)             
-        .attr("y", h/1.9)
+        .attr("y", h*.5)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#dfb182')
@@ -651,7 +629,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.83)             
-        .attr("y", h*.525)
+        .attr("y", h*.5)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#05ce7c')
@@ -659,7 +637,7 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.83)             
-        .attr("y", h*.545)
+        .attr("y", h*.52)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
         .attr('fill', '#05ce7c')
@@ -667,16 +645,32 @@ function change(data){
         
         svg2.append("text")
         .attr("x", w*.5)             
-        .attr("y", h*.13)
+        .attr("y", h*.06)
         .attr("text-anchor", "center")  
         .attr('class', "domTitle2")
         .attr('fill', '#282828')
         .text('* occupations with shortages');
+
+        svg2.append("text")
+        .attr("x", w*.9)             
+        .attr("y", h*.95)
+        .attr("text-anchor", "center")  
+        .attr('class', "professions")
+        .attr('fill', '#999999')
+        .text('Other');
         
-        svg2.on('click', function() {
-            d3.event.stopPropagation();
-            splitBubbles("professionExtra");
-        })
+         svg2.append("text")
+        .attr("x", w*.9)             
+        .attr("y", h*.97)
+        .attr("text-anchor", "center")  
+        .attr('class', "professions")
+        .attr('fill', '#999999')
+        .text('Occupations');
+        
+        // svg2.on('click', function() {
+        //     d3.event.stopPropagation();
+        //     splitBubbles("professionExtra");
+        // })
         
         
         }
@@ -698,10 +692,10 @@ function change(data){
 
               d3.selectAll("text").remove();
               
-              svg2.on('click', function() {
-                circleID == "professionExtra2";
-                 splitBubbles("professionExtra2");
-              });
+              // svg2.on('click', function() {
+              //   circleID == "professionExtra2";
+              //    splitBubbles("professionExtra2");
+              // });
         }
         
         function professionExtra2() {
@@ -712,7 +706,7 @@ function change(data){
               .transition()
               .duration(100)
               .attr('class', "profession")
-              .attr("r", function(d){ if (d.postsecondary == "0" && d.professionExtra2 != "0") {return d.r;} else if (d.postsecondary == "1") {return d.r+7;} else {return d.r}})
+              .attr("r", function(d){ if (d.postsecondary == "0" && d.professionExtra2 != "0") {return d.r-2;} else if (d.postsecondary == "1") {return d.r+5;} else {return 1}})
               .attr("cx", function(d){
                 if (d.professionExtra2 == '1' && d.profession =='10') {return (d.x+w*.25);} 
                 else if (d.professionExtra2 == "0" && d.postsecondary =='0') {return 0;} 
@@ -742,10 +736,10 @@ function change(data){
         .attr('fill', '#282828')
         .text('Educators'); 
         
-        svg2.on('click', function() {
-                circleID == "professionExtra3";
-                 splitBubbles("professionExtra3");
-              });
+        // svg2.on('click', function() {
+        //         circleID == "professionExtra3";
+        //          splitBubbles("professionExtra3");
+        //       });
            
            
       } 
@@ -764,10 +758,10 @@ function change(data){
               .style("fill", function(d){ return color6(d.profession);})
               .style("stroke", function(d){ return color6(d.profession); });
               
-              svg2.on('click', function() {
-                circleID == "engineering";
-                 splitBubbles("engineering");
-              });
+              // svg2.on('click', function() {
+              //   circleID == "engineering";
+              //    splitBubbles("engineering");
+              // });
         }
         
         
@@ -779,16 +773,16 @@ function change(data){
               .transition()
               .duration(100)
               .attr('class', "profession")
-              .attr("r", function(d){ if (d.engineering == "0" && d.professionExtra3 != "0") {return d.r;} else if (d.engineering == "1") {return d.r+7;} else {return d.r}})
+              .attr("r", function(d){ if (d.engineering == "0" && d.professionExtra3 != "0") {return d.r-2;} else if (d.engineering == "1") {return d.r+5;} else {return 1}})
               .attr("cx", function(d){
-                if (d.professionExtra2 == '1' && d.engineering =='1') {return (d.x*.95);} 
+                if (d.professionExtra2 == '1' && d.engineering =='1') {return (d.x +w*.1);} 
                 else if (d.professionExtra2 == "0" && d.engineering =='0') {return 0;} 
                 else if (d.professionExtra2 == "1" && d.engineering =='0'){return d.x;}
                 else 
                 {return 0;}
               })
               .attr("cy", function(d){
-              { if (d.engineering == "0" && d.professionExtra2 == "1") {return d.y + h*.4;} else if (d.engineering == "1") {return d.y*1.2;} else {return 0}}
+              { if (d.engineering == "0" && d.professionExtra2 == "1") {return d.y+h*.3;} else if (d.engineering == "1") {return d.y+h*.3;} else {return 0}}
               })
               .style("fill", function(d){ return color6(d.profession);})
               .style("stroke", function(d){ return "snow"; });
@@ -802,10 +796,10 @@ function change(data){
         .text('Engineers'); 
         
         
-        svg2.on('click', function() {
-                circleID == "professionExtra";
-                 splitBubbles("professionExtra");
-              });
+        // svg2.on('click', function() {
+        //         circleID == "professionExtra";
+        //          splitBubbles("professionExtra");
+        //       });
            
            
       } 
@@ -937,115 +931,77 @@ function change(data){
         
         simulation.force('y', d3.forceY().strength(forceStrength).y(function(d){ 
           
-          if (circleID == "Education"){
-           if (d.Education =="0") {
-             return h*.38;
-           }
-           else if (d.Education =="1") {
-             return h*.36;
-           }
-           else if (d.Education =="2") {
-             return h*.34;
-           }
-           else if (d.Education =="3") {
-             return h*.32;
-           }
-           else if (d.Education =="4") {
-             return h*.3;
-           }
-          }
+          // if (circleID == "Education"){
+          //  if (d.Education =="0") {
+          //    return h*.38;
+          //  }
+          //  else if (d.Education =="1") {
+          //    return h*.36;
+          //  }
+          //  else if (d.Education =="2") {
+          //    return h*.34;
+          //  }
+          //  else if (d.Education =="3") {
+          //    return h*.32;
+          //  }
+          //  else if (d.Education =="4") {
+          //    return h*.3;
+          //  }
+          // }
            
-           
-        else if (circleID == "STEM"){
+          
+        //   if (circleID == "STEM"){
             
-              if (d.STEM =="1" | d.STEM =="2") {
-             return h*.3;
-           }
-           else {return h*.65;}
+        //       if (d.STEM =="1" | d.STEM =="2") {
+        //      return h*.3;
+        //    }
+        //    else {return h*.65;}
       
-        }
+        // }
           
         
-      else if (circleID == "FieldNew"){
-           if (d.FieldNew =="1") {
-             return h*.25;
-           }
-           else if (d.FieldNew =="1") {
-             return h*.25;
-           }
-           else if (d.FieldNew =="2") {
-             return h*.25;
-           }
-           else if (d.FieldNew =="3") {
-             return h*.25;
-           }
-           else if (d.FieldNew=="4") {
-             return h*.25;
-           }
-           else if (d.FieldNew =="5") {
-             return h*.25;
-           }
-           else if (d.FieldNew =="6") {
-             return h*.25;
-           }
-           else if (d.FieldNew =="7") {
-             return h*.55;
-           }
-           else if (d.FieldNew =="8") {
-             return h*.55;
-           }
-           else if (d.FieldNew =="9") {
-             return h*.55;
-           }
-           else if (d.FieldNew =="10") {
-             return h*.57;
-           }
-           else {return h*.6;}
+      // if (circleID == "FieldNew"){
+      //      if (d.FieldNew =="1") {
+      //        return h*.25;
+      //      }
+      //      else if (d.FieldNew =="1") {
+      //        return h*.25;
+      //      }
+      //      else if (d.FieldNew =="2") {
+      //        return h*.25;
+      //      }
+      //      else if (d.FieldNew =="3") {
+      //        return h*.25;
+      //      }
+      //      else if (d.FieldNew=="4") {
+      //        return h*.25;
+      //      }
+      //      else if (d.FieldNew =="5") {
+      //        return h*.25;
+      //      }
+      //      else if (d.FieldNew =="6") {
+      //        return h*.25;
+      //      }
+      //      else if (d.FieldNew =="7") {
+      //        return h*.59;
+      //      }
+      //      else if (d.FieldNew =="8") {
+      //        return h*.59;
+      //      }
+      //      else if (d.FieldNew =="9") {
+      //        return h*.59;
+      //      }
+      //      else if (d.FieldNew =="10") {
+      //        return h*.6;
+      //      }
+      //      else {return h*.75;}
         
-        }
+      //   }
           
           
-        else if (circleID == "profession"){
-           if (d.profession =="1") {
-             return h*.3;
-           }
-           else if (d.profession =="2") {
-             return h*.46;
-           }
-            else if (d.profession =="3") {
-             return h*.3;
-           }
-            else if (d.profession =="4") {
-             return h*.46;
-           }
-            else if (d.profession =="5") {
-             return h*.3;
-           }
-            else if (d.profession =="6") {
-             return h*.46;
-           }
-           else if (d.profession =="7") {
-             return  h*.3;
-           }
-           else if (d.profession =="8") {
-             return h*.46;
-           }
-           else if (d.profession =="9") {
-             return h*.3;
-           }
-           else if (d.profession =="10") {
-             return h*.46;
-           }
-           else if (d.profession=="0") {
-              return h/2;
-            }
-           else if (d.profession=="11") {
-              return h*.65;
-            }
-            else {return 0;}
-            }
+       
         
-        else if (circleID == "professionExtra"){
+        if (circleID == "professionExtra"){
            if (d.professionExtra =="1") {
              return h/3;
            }
@@ -1069,17 +1025,17 @@ function change(data){
            else {return 0;}
         }
         
-        else if (circleID == "engineering"){
-           if (d.engineering =="1") {
-             return h/10;
-           }
-           else if (d.engineering !="1"){return h*.25;}
-           else {return 0;}
-        }
+        // else if (circleID == "engineering"){
+        //    if (d.engineering =="1") {
+        //      return h/10;
+        //    }
+        //    else if (d.engineering !="1"){return h*.25;}
+        //    else {return 0;}
+        // }
         
         else {
             
-             return 375;
+             return h*.5;
       
         }
           
