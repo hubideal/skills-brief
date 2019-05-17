@@ -225,44 +225,44 @@ function change(data){
         // .text('Recent Immigrants by Degree');
         
         svg2.append("text")
-        .attr("x", w*.1)             
-        .attr("y", h*.75)
+        .attr("x", w*.25)             
+        .attr("y", h*.65)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill','#6a7ef1')
-        .text('Masters Degree');
+        .text('Masters');
         
         svg2.append("text")
-        .attr("x", w*.3)             
-        .attr("y", h*.75)
+        .attr("x", w*.45)             
+        .attr("y", h*.65)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill','#a983cd')
-        .text('Bachelors Degree');
+        .text('Bachelors');
         
         svg2.append("text")
-        .attr("x", w*.5)             
-        .attr("y", h*.75)
+        .attr("x", w*.65)             
+        .attr("y", h*.65)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill','#cebbee')
         .text('Some College');
         
         svg2.append("text")
-        .attr("x", w*.65)             
-        .attr("y", h*.75)
+        .attr("x", w*.82)             
+        .attr("y", h*.65)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill','#86d8f8')
-        .text('High School Degree');
+        .text('High School');
         
         svg2.append("text")
-        .attr("x", w*.9)             
-        .attr("y", h*.75)
+        .attr("x", w)             
+        .attr("y", h*.65)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
         .attr('fill', '#909090')
-        .text('No Degree');
+        .text('Less than High School');
           
         //   svg2.on('click', function() {
     
