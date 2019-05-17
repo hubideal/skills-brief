@@ -68,7 +68,7 @@ var color6 = d3.scaleOrdinal()
 var color7 = d3.scaleOrdinal()
          .domain(['0', '1', '2'])
          .range(["#21D177", "#F7594C", "#F2BC02"]);
-var centerScale = d3.scalePoint().padding(2).range([w*.1, w*.9]);
+var centerScale = d3.scalePoint().padding(2).range([w*.01, w*.99]);
 var centerScale2 = d3.scalePoint().padding(1).range([w*.15, w*.85]);
 var forceStrength = .15;
 var forceStrength2 = .09;
@@ -280,7 +280,8 @@ function change(data){
               .duration(100)
               // .attr("cx", function(d){ if (d.STEM != "0") {return d.x+w/4;} else {return 0;} })
               // .attr("cy", function(d){ if (d.STEM != "0") {return d.y;} else {return 0;} })
-              .attr("cx", function(d) {return d.x*1.2 + w*.2;})
+              .attr("cx", function(d){ if (d.STEM =="1" | d.STEM =="2") {return d.x*1.2 +w*.2;}
+              else {return d.x -w*.3;}})
               .attr("cy", function(d){ if (d.STEM =="1" | d.STEM =="2") {return d.y -h*.3;}
               else {return d.y + h*.3;}})
               .attr('opacity', function(d){ if (d.STEM == "0") {return .5;} })
@@ -315,7 +316,7 @@ function change(data){
         .text('Non STEM Degrees');
         
         svg2.append("text")
-        .attr("x", w*.8)             
+        .attr("x", w*.45)             
         .attr("y", h*.8)
         .attr("text-anchor", "center")  
         .attr('class', "degree")
@@ -334,13 +335,13 @@ function change(data){
               .duration(100)
               .style('opacity', '1')
               .attr("cx", function(d){ 
-                  if (d.FieldNew == "0") {return d.x+w*.4;}
-                  else if (d.FieldNew == '7'||d.FieldNew == '8'||d.FieldNew == '9'||d.FieldNew == '10'){return (d.x*2.25-w*.8) }
-                  else {return (d.x*2.5);}
+                  if (d.FieldNew == "0") {return d.x+w*.3;}
+                  else if (d.FieldNew == '7'||d.FieldNew == '8'||d.FieldNew == '9'||d.FieldNew == '10'){return (d.x*1.8-w*.5) }
+                  else {return (d.x*1.8+w*.3);}
                   
               })
               .attr("cy", function(d){ 
-                  if (d.FieldNew == "0") {return d.y + h*.3;}
+                  if (d.FieldNew == "0") {return d.y + h*.4;}
                   else if (d.FieldNew == '7'||d.FieldNew == '8'||d.FieldNew == '9'||d.FieldNew == '10'){return (d.y*1.5) }
                   else {return (d.y-h*.25);}
                   
@@ -504,8 +505,8 @@ function change(data){
               .attr("r", function(d){ return d.r; })
               .transition()
               .duration(75)
-              .attr("cx", function(d){ if (d.profession == "11") {return d.x+w*.2}
-                                        else {return d.x*1.8}
+              .attr("cx", function(d){ if (d.profession == "11") {return d.x}
+                                        else {return d.x*1.5+w*.2}
               })
               .attr("cy", function(d){ if (d.profession == "1" || d.profession == "3" || d.profession == "5" || d.profession == "7" || d.profession == "9") {return d.y*1.1-h*.3} 
                                        else if (d.profession == "2" || d.profession == "4" || d.profession == "6" || d.profession == "8" || d.profession == "10") {return d.y*1.2}
@@ -539,7 +540,7 @@ function change(data){
         
         // 
         svg2.append("text")
-        .attr("x", w*.31)             
+        .attr("x", w*.4)             
         .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
@@ -547,7 +548,7 @@ function change(data){
         .text('Physical');
         
         svg2.append("text")
-        .attr("x", w*.31)             
+        .attr("x", w*.4)             
         .attr("y", h*.12)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
@@ -557,7 +558,7 @@ function change(data){
         
         
         svg2.append("text")
-        .attr("x", w*.48)             
+        .attr("x", w*.6)             
         .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
@@ -565,7 +566,7 @@ function change(data){
         .text('Computer');
         
          svg2.append("text")
-        .attr("x", w*.48)             
+        .attr("x", w*.6)             
         .attr("y", h*.12)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
@@ -574,7 +575,7 @@ function change(data){
         
         
         svg2.append("text")
-        .attr("x", w*.65)             
+        .attr("x", w*.8)             
         .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
@@ -582,7 +583,7 @@ function change(data){
         .text('Physicians*');
         
         svg2.append("text")
-        .attr("x", w*.82)             
+        .attr("x", w*.98)             
         .attr("y", h*.1)
         .attr("text-anchor", "center")  
         .attr('class', "professions")
